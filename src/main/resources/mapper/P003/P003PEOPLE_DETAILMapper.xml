@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SpringMapperXmlCodeCreator.java -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wonderrobot.ankenmatchingu.mapper.P003.P003PEOPLE_DETAILMapper">
+	<resultMap type="com.wonderrobot.ankenmatchingu.entity.P003.P003PEOPLE_DETAILEntity" id="P003PEOPLE_DETAILEntityMap">
+		<id property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="sex" column="sex" />
+		<result property="age" column="age" />
+		<result property="address" column="address" />
+		<result property="price" column="price" />
+		<result property="company_current" column="company_current" />
+		<result property="certificate" column="certificate" />
+		<result property="introduction" column="introduction" />
+		<result property="entry_time" column="entry_time" />
+		<result property="interview_time" column="interview_time" />
+		<result property="skills" column="skills" />
+		<result property="remark" column="remark" />
+		<result property="contact" column="contact" />
+		<result property="contact_mail" column="contact_mail" />
+		<result property="contact_company" column="contact_company" />
+		<result property="contact_phone" column="contact_phone" />
+		<result property="contact_address" column="contact_address" />
+		<result property="email_sender" column="email_sender" />
+		<result property="email_send_time" column="email_send_time" />
+		<result property="email_title" column="email_title" />
+		<result property="email_content" column="email_content" />
+		<result property="email_attachment" column="email_attachment" />
+		<result property="nationality" column="nationality" />
+	</resultMap>
+
+	<select id="smartSearch" resultType="com.wonderrobot.ankenmatchingu.entity.P003.P003PEOPLE_DETAILEntity">
+		select  * from people_detail
+
+	    where  1 = 1
+		<if test="interviewTime_start != null and interviewTime_start != ''">
+			AND   interview_time >= #{interviewTime_start}
+		</if>
+		<if test="interviewTime_end != null and interviewTime_end != ''">
+			AND   interview_time <![CDATA[<= #{interviewTime_end}
+		]]></if>
+		<if test="entryTime_start != null and entryTime_start != ''">
+			AND   entry_time >= #{entryTime_start}
+		</if>
+		<if test="entryTime_end != null and entryTime_end != ''">
+			AND   entry_time <![CDATA[<= #{entryTime_end}
+		]]></if>
+		<if test="emailSendTime_start != null and emailSendTime_start != ''">
+			AND   email_send_time >= #{emailSendTime_start}
+		</if>
+		<if test="emailSendTime_end != null and emailSendTime_end != ''">
+			AND   email_send_time <![CDATA[<=  #{emailSendTime_end}
+		]]></if>
+		<if test="email_content != null and email_content != ''">
+			AND   email_content like "%"+${email_content}+"%"
+		</if>
+    </select>
+</mapper>

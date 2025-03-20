@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SpringMapperXmlCodeCreator.java -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wonderrobot.ankenmatchingu.mapper.S001.S001sms6grd1SmartSearchMapper">
+	<resultMap type="com.wonderrobot.ankenmatchingu.entity.S001.S001sms6grd1SmartSearchEntity" id="S001sms6grd1SmartSearchEntityMap">
+		<result property="A1id" column="A1id" />
+		<result property="A1config_code" column="A1config_code" />
+		<result property="A1value" column="A1value" />
+		<result property="A1description" column="A1description" />
+	</resultMap>
+
+	<select id="s001sms6grd1SmartSearch"  resultMap="S001sms6grd1SmartSearchEntityMap">
+		<!--1488-->
+		SELECT 
+		N1.A1id,
+		N1.A1config_code,
+		N1.A1value,
+		N1.A1description
+		FROM <!--1484-->
+		(SELECT 
+		A1.id AS A1id ,
+		A1.config_code A1config_code ,
+		A1.description A1description ,
+		A1.value A1value 
+		FROM `SYS_CONFIG` A1
+		WHERE 1=1 ) N1
+		<where>
+		1=1 
+		<if test="configCode1 != null and configCode1 != ''">
+		AND   N1.A1config_code LIKE CONCAT('%',#{configCode1},'%') 
+		</if>
+		<if test="value1 != null and value1 != ''">
+		AND   N1.A1value LIKE CONCAT('%',#{value1},'%') 
+		</if>
+		<if test="desc1 != null and desc1 != ''">
+		AND   N1.A1description LIKE CONCAT('%',#{desc1},'%') 
+		</if>
+		<if test="description1 != null and description1 != ''">
+		AND   N1.A1description LIKE CONCAT('%',#{description1},'%') 
+		</if>
+		</where>
+		ORDER BY 1  LIMIT 50
+	</select>
+</mapper>

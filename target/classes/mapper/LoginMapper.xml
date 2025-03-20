@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wonderrobot.ankenmatchingu.mapper.LoginMapper">
+	<resultMap type="com.wonderrobot.ankenmatchingu.entity.LoginEntity" id="LoginEntityMap">
+		<id property="LOGINID" column="LOGINID" />
+		<result property="LOGINID" column="LOGINID" />
+		<result property="PASSWORD" column="PASSWORD" />
+		<result property="USER_EFF" column="USER_EFF" />
+		<result property="GROUPID" column="GROUPID" />
+		<result property="userid" column="USERID" />
+		<result property="USERNM1" column="USERNM1" />
+		<result property="USERNM2" column="USERNM2" />
+	</resultMap>
+	<!--  -->
+	<select id="loginInit" resultMap="LoginEntityMap" statementType = "STATEMENT">
+		SELECT ${LOGINID},${LOGINPASSWORD},${USER_EFF},${GROUPID},${USERID}  FROM ${LOGINTABLEID} WHERE ${WHRLOGINID} AND ${WHRLOGINPASSWORD}
+	</select>
+	<select id="loginInitNm" resultMap="LoginEntityMap" statementType = "STATEMENT">
+		SELECT ${LOGINID},${LOGINPASSWORD},${USER_EFF},${GROUPID},${USERID},${USERNM1},${USERNM2} FROM ${LOGINTABLEID} WHERE ${WHRLOGINID} AND ${WHRLOGINPASSWORD}
+	</select>
+	<select id="loginInitSurname" resultMap="LoginEntityMap" statementType = "STATEMENT">
+		SELECT ${LOGINID},${LOGINPASSWORD},${USER_EFF},${GROUPID},${USERID},${USERNM1} FROM ${LOGINTABLEID} WHERE ${WHRLOGINID} AND ${WHRLOGINPASSWORD}
+	</select>
+	<select id="loginInitName" resultMap="LoginEntityMap" statementType = "STATEMENT">
+		SELECT ${LOGINID},${LOGINPASSWORD},${USER_EFF},${GROUPID},${USERID},${USERNM2} FROM ${LOGINTABLEID} WHERE ${WHRLOGINID} AND ${WHRLOGINPASSWORD}
+	</select>
+	<select id="loginAdminInit" resultMap="LoginEntityMap">
+		SELECT LOGINID,PASSWORD FROM ADMIN_USER_TBL WHERE LOGINID = #{LOGINID} AND PASSWORD = #{PASSWORD}
+	</select>
+	<select id="getAdminByUsername" resultType="com.wonderrobot.ankenmatchingu.security.LoginUser">
+	SELECT u.LOGINID as username, u.PASSWORD, g.GROUP_ID 
+	
+	FROM ADMIN_USER_TBL u
+	LEFT JOIN wf_group_user_tbl g ON u.loginid = g.USERID
+	WHERE u.loginid = #{LOGINID}
+	</select>
+	<select id="getBusinessUserByUsername" resultType="com.wonderrobot.ankenmatchingu.security.LoginUser">
+	SELECT u.LOGINID as username, u.PASSWORD,
+	g.GROUP_ID
+	FROM ADMIN_USER_TBL u
+	LEFT JOIN wf_group_user_tbl g ON u.LOGINID = g.USERID
+	WHERE u.LOGINID = #{LOGINID}
+	union all
+	SELECT ${WHRLOGINID},${LOGINPASSWORD},g.USER_VALUE1 as GROUP_ID
+	FROM ${LOGINTABLEID}
+	LEFT JOIN wf_user_value_rel_map_tbl g ON ${LOGINTABLEID}.${DEPARTID} = g.USER_VALUE2
+	WHERE ${WHRLOGINID} = #{LOGINID}
+	union all 
+	SELECT ${WHRLOGINID},${LOGINPASSWORD},${DEPARTID} as GROUP_ID
+	FROM ${LOGINTABLEID}
+	</select>
+	<select id="getPageRightByGroup" resultType="com.wonderrobot.ankenmatchingu.security.PageRight">
+	SELECT
+	A.HAVINGID, 
+	M1.PROFILE_ID AS PAGEID, 
+	A.GROUPID, 
+	A.NORIGHTFLG, 
+	A.INSERTFLG, 
+	A.UPDATEFLG, 
+	A.DISPLAYFLG, 
+	A.DELETEFLG
+	FROM wf_page_right_tbl A
+	INNER JOIN WF_MENU_TBL M ON M.PROFILE_ID = A.PAGEID AND A.BUSINESS_UNIT = M.BUSINESS_UNIT AND A.ENVIRONFLG = 0 
+	INNER JOIN WF_MENU_TBL M1 ON ( M1.PATH LIKE CONCAT(M.PATH, '%') AND M.BUSINESS_UNIT = M1.BUSINESS_UNIT AND A.ENVIRONFLG = 0 ) 
+	<where>
+		1 = 1 
+		<if test="GROUPID != null and GROUPID != ''">
+			AND GROUPID  = #{GROUPID} 
+		</if>
+	</where>
+	</select>
+	<select id="getPageMngId" resultType="String">
+		SELECT PAGE_MNG_ID FROM WF_PAGE_TBL WHERE PAGEID = #{PAGEID}
+	</select>
+</mapper>
+

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- BasicMapperXml.vm -->
+<mapper namespace="com.wonderrobot.ankenmatchingu.mapper.J001.J001PageSearchMapper">
+
+	<!-- Query data by search condition. -->
+	<resultMap id="J001PageSearchResponseEntityMap" type="com.wonderrobot.ankenmatchingu.entity.J001.J001PageSearchResponseEntity">
+		<result property="txt24" column="email_sender" />
+		<result property="txt28" column="email_title" />
+		<result property="txt2" column="id" />
+		<result property="txt12" column="recruitment" />
+	</resultMap>
+	<select id="queryJ001PageSearch" resultMap="J001PageSearchResponseEntityMap">
+		<!--115-->
+		SELECT 
+		email_sender, 
+		email_title, 
+		id, 
+		recruitment FROM JOB_DETAIL
+		<where>
+			1 = 1
+			<if test="email_sender != null and email_sender != ''">
+								AND email_sender LIKE CONCAT('%', #{email_sender}, '%')
+							</if>
+			<if test="email_title != null and email_title != ''">
+								AND email_title LIKE CONCAT('%', #{email_title}, '%')
+							</if>
+			<if test="id != null and id != ''">
+								AND id LIKE CONCAT('%', #{id}, '%')
+							</if>
+			<if test="recruitment != null and recruitment != ''">
+								AND recruitment LIKE CONCAT('%', #{recruitment}, '%')
+							</if>
+		</where>
+		
+		 LIMIT 10
+	</select>
+	<!-- Delete data in search. -->
+	<delete id="deleteJ001PageSearch" >
+		DELETE FROM JOB_DETAIL WHERE id = #{id}
+	</delete>
+
+</mapper>

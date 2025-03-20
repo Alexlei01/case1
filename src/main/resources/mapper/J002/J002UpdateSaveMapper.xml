@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SpringMapperXmlCodeCreator.java -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wonderrobot.ankenmatchingu.mapper.J002.J002UpdateSaveMapper">
+	<resultMap type="com.wonderrobot.ankenmatchingu.entity.J002.J002UpdateSaveEntity" id="J002UpdateSaveEntityMap">
+		<result property="id" column="id" />
+		<result property="job_id" column="job_id" />
+		<result property="job_name" column="job_name" />
+		<result property="people_id" column="people_id" />
+		<result property="people_name" column="people_name" />
+		<result property="match_percent" column="match_percent" />
+		<result property="match_code" column="match_code" />
+		<result property="LAST_UPDATE_ID" column="LAST_UPDATE_ID" />
+		<result property="LAST_UPDATE_DTM" column="LAST_UPDATE_DTM" />
+	</resultMap>
+	<!-- 案件マッチング スマート保存-更新 -->
+	<update id="j002UpdateSaveData" >
+		UPDATE JOB_MATCH
+	SET id = CAST(#{id} AS SIGNED),job_id = CAST(#{job_id} AS SIGNED),job_name = #{job_name},people_id = CAST(#{people_id} AS SIGNED),people_name = #{people_name},match_percent = CAST(#{match_percent} AS SIGNED),match_code = #{match_code},LAST_UPDATE_ID = #{LAST_UPDATE_ID},LAST_UPDATE_DTM = #{LAST_UPDATE_DTM}
+		<where>
+			1 = 1 
+			<if test="id1 != null and id1 != ''">
+				 AND id  = CAST(#{id1} AS SIGNED) 
+			</if>
+		</where>
+	</update>
+</mapper>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- log4jxml.vm -->
+<Configuration status="debug">
+    <Properties>
+        <Property name="filename">./log/debug_$${ctx:USER_ID:-ANONYMOUS}.log</Property>
+    </Properties>
+    <Appenders>
+        <RollingFile name="FILE_DEBUG" fileName="./log/smartexp_debug.log"
+                     filePattern="./log/$${date:yyyy-MM}/smartexp_debug-%d{yyyy-MM-dd}-%i.log">
+            <Filters>
+                <ThresholdFilter level="debug"/>
+            </Filters>
+            <PatternLayout charset="utf-8" pattern="%d{yyyy-MM-dd_HH:mm:ss.SSS} %x %-5p %C (%F:%L) %c - %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy fileIndex="max" min="1" max="100"/>
+        </RollingFile>
+        <RollingFile name="SAASFORCE_FILE_DEBUG" fileName="./log/saasforce_old_debug.log"
+                     filePattern="./log/$${date:yyyy-MM}/saasforce_old_debug-%d{yyyy-MM-dd}-%i.log">
+            <Filters>
+                <ThresholdFilter level="TRACE"/>
+            </Filters>
+            <PatternLayout charset="utf-8" pattern="%d{yyyy-MM-dd_HH:mm:ss.SSS}  %-5p  %c - %m %C (%F:%L) %x %n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy fileIndex="max" min="1" max="200"/>
+        </RollingFile>
+        <RollingFile name="BUSINESS_FILE_DEBUG" fileName="./log/business_debug.log"
+                     filePattern="./log/$${date:yyyy-MM}/business_debug-%d{yyyy-MM-dd}-%i.log">
+            <Filters>
+                <ThresholdFilter level="TRACE"/>
+            </Filters>
+            <PatternLayout charset="utf-8" pattern="%d{yyyy-MM-dd_HH:mm:ss.SSS}  %-5p  %c - %m %n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy fileIndex="max" min="1" max="200"/>
+        </RollingFile>
+        <RollingFile name="FILE_INFO" fileName="./log/smartexp_info.log"
+                     filePattern="./log/$${date:yyyy-MM}/smartexp_info-%d{yyyy-MM-dd}-%i.log">
+            <Filters>
+                <ThresholdFilter level="INFO"/>
+            </Filters>
+            <PatternLayout charset="utf-8" pattern="%d{yyyy-MM-dd_HH:mm:ss.SSS} %x  %-5p  %m%n"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy fileIndex="max" min="1" max="100"/>
+        </RollingFile>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd_HH:mm:ss.SSS}  %-5p  %c - %m %C (%F:%L) %x %n"/>
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="WFC_DEBUG" level="TRACE">
+            <AppenderRef ref="FILE_DEBUG" />
+        </Logger>
+        
+	<Logger name="com.wonderfulfly" level="DEBUG">
+		<AppenderRef ref="BUSINESS_FILE_DEBUG" />
+	</Logger>
+
+	<Logger name="com.wonderrobot.ankenmatchingu.mapper" level="DEBUG">
+		<AppenderRef ref="BUSINESS_FILE_DEBUG" />
+	</Logger>
+
+	<Logger name="org.mybatis.spring" level="DEBUG">
+		<AppenderRef ref="BUSINESS_FILE_DEBUG" />
+	</Logger>
+
+	<Logger name="org.apache.ibatis"  level="DEBUG">
+		<AppenderRef ref="BUSINESS_FILE_DEBUG" />
+	</Logger>
+
+	<Logger name="java.sql.PreparedStatement"  level="DEBUG">
+		<AppenderRef ref="BUSINESS_FILE_DEBUG" />
+	</Logger>
+
+	<Logger name="java.sql.Statement"  level="DEBUG">
+		<AppenderRef ref="BUSINESS_FILE_DEBUG" />
+	</Logger>
+
+	<Logger name="java.sql.Connection" level="DEBUG">
+		<AppenderRef ref="BUSINESS_FILE_DEBUG" />
+	</Logger>
+
+	<logger name="java.sql.ResultSet" level="DEBUG">
+		<AppenderRef ref="BUSINESS_FILE_DEBUG" />
+	</logger>
+        <Root level="debug">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="FILE_INFO" />
+            <AppenderRef ref="BUSINESS_FILE_DEBUG" />
+        </Root>
+    </Loggers>
+</Configuration>

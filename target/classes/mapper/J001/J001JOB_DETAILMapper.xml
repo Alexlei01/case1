@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SpringMapperXmlCodeCreator.java -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wonderrobot.ankenmatchingu.mapper.J001.J001JOB_DETAILMapper">
+	<resultMap type="com.wonderrobot.ankenmatchingu.entity.J001.J001JOB_DETAILEntity" id="J001JOB_DETAILEntityMap">
+		<id property="id" column="id" />
+		<result property="project" column="project" />
+		<result property="outline" column="outline" />
+		<result property="project_machine" column="project_machine" />
+		<result property="description" column="description" />
+		<result property="recruitment" column="recruitment" />
+		<result property="project_cycle" column="project_cycle" />
+		<result property="work_address" column="work_address" />
+		<result property="skill_required" column="skill_required" />
+		<result property="budget" column="budget" />
+		<result property="remark" column="remark" />
+		<result property="email_sender" column="email_sender" />
+		<result property="email_send_time" column="email_send_time" />
+		<result property="email_title" column="email_title" />
+		<result property="email_content" column="email_content" />
+		<result property="email_attachment" column="email_attachment" />
+	</resultMap>
+	<!-- ページ用 案件明細 -->
+	<select id="j001InitDepthZero"  resultMap="J001JOB_DETAILEntityMap">
+		<!--475-->
+		SELECT 
+		id,
+		project,
+		outline,
+		project_machine,
+		description,
+		recruitment,
+		project_cycle,
+		work_address,
+		skill_required,
+		budget,
+		remark,
+		email_sender,
+		email_title,
+		email_content,
+		email_send_time
+		FROM JOB_DETAIL
+		<where>
+			1 = 1 
+			<if test="txt2 != null and txt2 != ''">
+				 AND id  = CAST(#{txt2} AS SIGNED) 
+			</if>
+		</where>
+	</select>
+	<!-- ページ用 案件明細 -->
+	<select id="j001SearchInitDepthZero"  resultMap="J001JOB_DETAILEntityMap">
+		<!--475-->
+		SELECT 
+		id,
+		project,
+		outline,
+		project_machine,
+		description,
+		recruitment,
+		project_cycle,
+		work_address,
+		skill_required,
+		budget,
+		remark,
+		email_sender,
+		email_title,
+		email_content,
+		email_send_time
+		FROM JOB_DETAIL
+		<where>
+			1 = 1 
+			<if test="txt2 != null and txt2 != ''">
+				 AND id  = CAST(#{txt2} AS SIGNED) 
+			</if>
+		</where>
+	</select>
+</mapper>

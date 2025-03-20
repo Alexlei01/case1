@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SpringMapperXmlCodeCreator.java -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wonderrobot.ankenmatchingu.mapper.S001.S001Delete1GridSaveMapper">
+	<resultMap type="com.wonderrobot.ankenmatchingu.entity.S001.S001Delete1GridSaveEntity" id="S001Delete1GridSaveEntityMap">
+	</resultMap>
+	<!-- 共通設定管理 スマート保存-削除 -->
+	<delete id="s001Delete1GridSaveData" >
+		DELETE FROM SYS_CONFIG
+		<where>
+			1 = 1 
+			<if test="id != null and id != ''">
+				 AND id  = CAST(#{id} AS SIGNED) 
+			</if>
+		</where>
+	</delete>
+</mapper>

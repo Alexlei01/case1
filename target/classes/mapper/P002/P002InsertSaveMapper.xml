@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SpringMapperXmlCodeCreator.java -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wonderrobot.ankenmatchingu.mapper.P002.P002InsertSaveMapper">
+	<resultMap type="com.wonderrobot.ankenmatchingu.entity.P002.P002InsertSaveEntity" id="P002InsertSaveEntityMap">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="sex" column="sex" />
+		<result property="age" column="age" />
+		<result property="address" column="address" />
+		<result property="price" column="price" />
+		<result property="company_current" column="company_current" />
+		<result property="certificate" column="certificate" />
+		<result property="introduction" column="introduction" />
+		<result property="entry_time" column="entry_time" />
+		<result property="interview_time" column="interview_time" />
+		<result property="skills" column="skills" />
+		<result property="remark" column="remark" />
+		<result property="contact" column="contact" />
+		<result property="contact_mail" column="contact_mail" />
+		<result property="contact_company" column="contact_company" />
+		<result property="contact_phone" column="contact_phone" />
+		<result property="contact_address" column="contact_address" />
+		<result property="email_sender" column="email_sender" />
+		<result property="email_send_time" column="email_send_time" />
+		<result property="email_title" column="email_title" />
+		<result property="email_content" column="email_content" />
+		<result property="email_attachment" column="email_attachment" />
+		<result property="nationality" column="nationality" />
+		<result property="FIRST_REG_ID" column="FIRST_REG_ID" />
+		<result property="FIRST_REG_DTM" column="FIRST_REG_DTM" />
+		<result property="LAST_UPDATE_ID" column="LAST_UPDATE_ID" />
+		<result property="LAST_UPDATE_DTM" column="LAST_UPDATE_DTM" />
+	</resultMap>
+	<!-- 技術者明細 スマート保存-登録 -->
+	<insert id="p002InsertSaveData" >
+		INSERT INTO PEOPLE_DETAIL
+	(id,name,sex,age,address,price,company_current,certificate,introduction,entry_time,interview_time,skills,remark,contact,contact_mail,contact_company,contact_phone,contact_address,email_sender,email_send_time,email_title,email_content,email_attachment,nationality,FIRST_REG_ID,FIRST_REG_DTM,LAST_UPDATE_ID,LAST_UPDATE_DTM) 
+	VALUES (
+	CAST(#{id} AS SIGNED),#{name},CAST(#{sex} AS SIGNED),#{age},#{address},#{price},#{company_current},#{certificate},#{introduction},#{entry_time},#{interview_time},#{skills},#{remark},#{contact},#{contact_mail},#{contact_company},#{contact_phone},#{contact_address},#{email_sender},#{email_send_time},#{email_title},#{email_content},#{email_attachment},#{nationality},#{FIRST_REG_ID},#{FIRST_REG_DTM},#{LAST_UPDATE_ID},#{LAST_UPDATE_DTM})
+	</insert>
+</mapper>

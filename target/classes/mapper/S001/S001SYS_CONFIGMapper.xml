@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SpringMapperXmlCodeCreator.java -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wonderrobot.ankenmatchingu.mapper.S001.S001SYS_CONFIGMapper">
+	<resultMap type="com.wonderrobot.ankenmatchingu.entity.S001.S001SYS_CONFIGEntity" id="S001SYS_CONFIGEntityMap">
+		<id property="id" column="id" />
+		<result property="config_code" column="config_code" />
+		<result property="description" column="description" />
+		<result property="value" column="value" />
+	</resultMap>
+</mapper>

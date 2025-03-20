@@ -1,0 +1,68 @@
+server:
+  port: 8686
+  tomcat:
+    uri-encoding: UTF-8
+  servlet:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
+
+spring:
+  mvc:
+    view:
+      suffix: .jsp
+      prefix: /WEB-INF/view/
+    static-path-pattern: /static/**
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER 
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/ankenmatchingu?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true&verifyServerCertificate=false&useSSL=false
+    username: root
+    password: root
+    root-url: jdbc:mysql://127.0.0.1:3306/
+
+
+  thymeleaf:
+    enabled: true
+    cache: false
+    prefix: /WEB-INF/view/
+
+
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+mybatis:
+  mapper-locations: classpath:mapper/**/*.xml,classpath:mapper/*.xml
+  config-location: classpath:mybatis/mybatis-config.xml
+  type-aliases-package: com.wonderrobot.ankenmatchingu.
+
+logging:
+  level:
+    com.wonderrobot.ankenmatchingu.mapper: debug
+    org.springframework.boot.autoconfigure: error
+    
+init:
+  database:
+    enabled: false #initialize database
+    
+h2db:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:file:/h2db/data;MODE=MySQL;FILE_LOCK=SOCKET;AUTO_SERVER=TRUE;
+    username: root
+    password: root
+    
+slow-sql-interceptor:
+  enabled: true
+  timeout: 10
+  mail-conf:
+    mailHost: 11
+    mailPort: 11
+    mailAccount: 11
+    mailPassword: 11
+

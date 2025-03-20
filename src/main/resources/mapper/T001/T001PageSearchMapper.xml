@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- BasicMapperXml.vm -->
+<mapper namespace="com.wonderrobot.ankenmatchingu.mapper.T001.T001PageSearchMapper">
+
+	<!-- Query data by search condition. -->
+	<resultMap id="T001PageSearchResponseEntityMap" type="com.wonderrobot.ankenmatchingu.entity.T001.T001PageSearchResponseEntity">
+		<result property="txt2" column="id" />
+		<result property="txt8" column="remark" />
+		<result property="txt10" column="tag_code" />
+		<result property="txt4" column="tag_name" />
+		<result property="txt6" column="tag_type" />
+	</resultMap>
+	<select id="queryT001PageSearch" resultMap="T001PageSearchResponseEntityMap">
+		<!--115-->
+		SELECT 
+		id, 
+		remark, 
+		tag_code, 
+		tag_name, 
+		tag_type FROM TAG
+		<where>
+			1 = 1
+			<if test="id != null and id != ''">
+								AND id LIKE CONCAT('%', #{id}, '%')
+							</if>
+			<if test="remark != null and remark != ''">
+								AND remark LIKE CONCAT('%', #{remark}, '%')
+							</if>
+			<if test="tag_code != null and tag_code != ''">
+								AND tag_code LIKE CONCAT('%', #{tag_code}, '%')
+							</if>
+			<if test="tag_name != null and tag_name != ''">
+								AND tag_name LIKE CONCAT('%', #{tag_name}, '%')
+							</if>
+			<if test="tag_type != null and tag_type != ''">
+								AND tag_type LIKE CONCAT('%', #{tag_type}, '%')
+							</if>
+		</where>
+		
+		 LIMIT 10
+	</select>
+	<!-- Delete data in search. -->
+	<delete id="deleteT001PageSearch" >
+		DELETE FROM TAG WHERE id = #{id}
+	</delete>
+
+</mapper>

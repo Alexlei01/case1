@@ -1,0 +1,112 @@
+{
+  "groups": [
+    {
+      "name": "source",
+      "type": "com.wonderrobot.ankenmatchingu.entity.ConfigEntity",
+      "sourceType": "com.wonderrobot.ankenmatchingu.entity.ConfigEntity"
+    }
+  ],
+  "properties": [
+    {
+      "name": "source.b-u-s-i-n-e-s-s-e-r-r-o-r-l-o-g-s-u-f-f-i-x",
+      "type": "java.lang.String",
+      "sourceType": "com.wonderrobot.ankenmatchingu.entity.ConfigEntity"
+    },
+    {
+      "name": "source.export-file-path",
+      "type": "java.lang.String",
+      "sourceType": "com.wonderrobot.ankenmatchingu.entity.ConfigEntity"
+    },
+    {
+      "name": "source.inout-businessunit",
+      "type": "java.lang.String",
+      "sourceType": "com.wonderrobot.ankenmatchingu.entity.ConfigEntity"
+    },
+    {
+      "name": "source.inout-environflg",
+      "type": "java.lang.String",
+      "sourceType": "com.wonderrobot.ankenmatchingu.entity.ConfigEntity"
+    },
+    {
+      "name": "source.inout-langid",
+      "type": "java.lang.String",
+      "sourceType": "com.wonderrobot.ankenmatchingu.entity.ConfigEntity"
+    },
+    {
+      "name": "source.log4j-path",
+      "type": "java.lang.String",
+      "sourceType": "com.wonderrobot.ankenmatchingu.entity.ConfigEntity"
+    },
+    {
+      "name": "source.pdf-font-name",
+      "type": "java.lang.String",
+      "sourceType": "com.wonderrobot.ankenmatchingu.entity.ConfigEntity"
+    },
+    {
+      "name": "source.pdf-font-path",
+      "type": "java.lang.String",
+      "sourceType": "com.wonderrobot.ankenmatchingu.entity.ConfigEntity"
+    },
+    {
+      "name": "source.print-file-path",
+      "type": "java.lang.String",
+      "sourceType": "com.wonderrobot.ankenmatchingu.entity.ConfigEntity"
+    },
+    {
+      "name": "source.print-template-file-path",
+      "type": "java.lang.String",
+      "sourceType": "com.wonderrobot.ankenmatchingu.entity.ConfigEntity"
+    },
+    {
+      "name": "source.sifglog-path",
+      "type": "java.lang.String",
+      "sourceType": "com.wonderrobot.ankenmatchingu.entity.ConfigEntity"
+    },
+    {
+      "name": "source.upload-file-path",
+      "type": "java.lang.String",
+      "sourceType": "com.wonderrobot.ankenmatchingu.entity.ConfigEntity"
+    },
+    {
+      "name": "source.user-table-eff-status-fieldid",
+      "type": "java.lang.String",
+      "sourceType": "com.wonderrobot.ankenmatchingu.entity.ConfigEntity"
+    },
+    {
+      "name": "source.user-table-group-fieldid",
+      "type": "java.lang.String",
+      "sourceType": "com.wonderrobot.ankenmatchingu.entity.ConfigEntity"
+    },
+    {
+      "name": "source.user-table-password-fieldid",
+      "type": "java.lang.String",
+      "sourceType": "com.wonderrobot.ankenmatchingu.entity.ConfigEntity"
+    },
+    {
+      "name": "source.user-table-user-fieldid",
+      "type": "java.lang.String",
+      "sourceType": "com.wonderrobot.ankenmatchingu.entity.ConfigEntity"
+    },
+    {
+      "name": "source.user-table-userid-fieldid",
+      "type": "java.lang.String",
+      "sourceType": "com.wonderrobot.ankenmatchingu.entity.ConfigEntity"
+    },
+    {
+      "name": "source.user-table-usernm1-fieldid",
+      "type": "java.lang.String",
+      "sourceType": "com.wonderrobot.ankenmatchingu.entity.ConfigEntity"
+    },
+    {
+      "name": "source.user-table-usernm2-fieldid",
+      "type": "java.lang.String",
+      "sourceType": "com.wonderrobot.ankenmatchingu.entity.ConfigEntity"
+    },
+    {
+      "name": "source.user-tableid",
+      "type": "java.lang.String",
+      "sourceType": "com.wonderrobot.ankenmatchingu.entity.ConfigEntity"
+    }
+  ],
+  "hints": []
+}

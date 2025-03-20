@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- BasicMapperXml.vm -->
+<mapper namespace="com.wonderrobot.ankenmatchingu.mapper.P001.P001PageSearchMapper">
+
+	<!-- Query data by search condition. -->
+	<resultMap id="P001PageSearchResponseEntityMap" type="com.wonderrobot.ankenmatchingu.entity.P001.P001PageSearchResponseEntity">
+		<result property="txt14" column="detail_id" />
+		<result property="txt18" column="email_send_time" />
+		<result property="txt2" column="id" />
+		<result property="txt10" column="number_end" />
+		<result property="txt8" column="number_start" />
+		<result property="txt16" column="tag_code" />
+		<result property="txt6" column="tag_id" />
+		<result property="txt4" column="tag_type" />
+		<result property="txt12" column="value" />
+	</resultMap>
+	<select id="queryP001PageSearch" resultMap="P001PageSearchResponseEntityMap">
+		<!--115-->
+		SELECT 
+		detail_id, 
+		email_send_time, 
+		id, 
+		number_end, 
+		number_start, 
+		tag_code, 
+		tag_id, 
+		tag_type, 
+		value FROM PEOPLE_TAG
+		<where>
+			1 = 1
+			<if test="detail_id != null and detail_id != ''">
+								AND detail_id LIKE CONCAT('%', #{detail_id}, '%')
+							</if>
+			<if test="email_send_time != null and email_send_time != ''">
+								AND email_send_time LIKE CONCAT('%', #{email_send_time}, '%')
+							</if>
+			<if test="id != null and id != ''">
+								AND id LIKE CONCAT('%', #{id}, '%')
+							</if>
+			<if test="number_end != null and number_end != ''">
+								AND number_end LIKE CONCAT('%', #{number_end}, '%')
+							</if>
+			<if test="number_start != null and number_start != ''">
+								AND number_start LIKE CONCAT('%', #{number_start}, '%')
+							</if>
+			<if test="tag_code != null and tag_code != ''">
+								AND tag_code LIKE CONCAT('%', #{tag_code}, '%')
+							</if>
+			<if test="tag_id != null and tag_id != ''">
+								AND tag_id LIKE CONCAT('%', #{tag_id}, '%')
+							</if>
+			<if test="tag_type != null and tag_type != ''">
+								AND tag_type LIKE CONCAT('%', #{tag_type}, '%')
+							</if>
+			<if test="value != null and value != ''">
+								AND value LIKE CONCAT('%', #{value}, '%')
+							</if>
+		</where>
+		
+		 LIMIT 10
+	</select>
+	<!-- Delete data in search. -->
+	<delete id="deleteP001PageSearch" >
+		DELETE FROM PEOPLE_TAG WHERE id = #{id}
+	</delete>
+
+</mapper>

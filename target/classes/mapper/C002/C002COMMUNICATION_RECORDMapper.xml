@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SpringMapperXmlCodeCreator.java -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wonderrobot.ankenmatchingu.mapper.C002.C002COMMUNICATION_RECORDMapper">
+	<resultMap type="com.wonderrobot.ankenmatchingu.entity.C002.C002COMMUNICATION_RECORDEntity" id="C002COMMUNICATION_RECORDEntityMap">
+		<id property="id" column="id" />
+		<result property="record_type" column="record_type" />
+		<result property="email_receiver" column="email_receiver" />
+		<result property="email_title" column="email_title" />
+		<result property="email_content" column="email_content" />
+		<result property="email_sender" column="email_sender" />
+		<result property="email_send_time" column="email_send_time" />
+		<result property="match_id" column="match_id" />
+		<result property="c_id" column="c_id" />
+	</resultMap>
+	<!-- ページ用 コミュニケーション記録 -->
+	<select id="c002InitDepthZero"  resultMap="C002COMMUNICATION_RECORDEntityMap">
+		<!--475-->
+		SELECT 
+		id,
+		record_type,
+		email_receiver,
+		email_title,
+		email_content,
+		email_sender,
+		email_send_time,
+		match_id,
+		c_id
+		FROM COMMUNICATION_RECORD
+		<where>
+			1 = 1 
+			<if test="txt2 != null and txt2 != ''">
+				 AND id  = CAST(#{txt2} AS SIGNED) 
+			</if>
+		</where>
+	</select>
+	<!-- ページ用 コミュニケーション記録 -->
+	<select id="c002SearchInitDepthZero"  resultMap="C002COMMUNICATION_RECORDEntityMap">
+		<!--475-->
+		SELECT 
+		id,
+		record_type,
+		email_receiver,
+		email_title,
+		email_content,
+		email_sender,
+		email_send_time,
+		match_id,
+		c_id
+		FROM COMMUNICATION_RECORD
+		<where>
+			1 = 1 
+			<if test="txt2 != null and txt2 != ''">
+				 AND id  = CAST(#{txt2} AS SIGNED) 
+			</if>
+		</where>
+	</select>
+</mapper>

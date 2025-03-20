@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wonderrobot.ankenmatchingu.mapper.GetMaxNumValueMapper">
+	<resultMap type="com.wonderrobot.ankenmatchingu.entity.GetMaxNumValueEntity" id="MaxNumMap">
+		<result property="NUM_VAR" column="NUM_VAR" />
+	</resultMap>
+	<select id="getSysRecfldAutoRecordFieldAuto" resultMap="MaxNumMap">
+		SELECT NUM_VAR FROM WF_SYS_RECFLD_AUTO_TBL WHERE RECORD_ID = #{RECORD_ID} AND FIELD_ID = #{FIELD_ID}
+	</select>
+	<insert id="insertRecordFieldAutoIntoSysRecfldAuto">
+		INSERT INTO WF_SYS_RECFLD_AUTO_TBL ( BUSINESS_UNIT,RECORD_ID,FIELD_ID,NUM_VAR,FIRST_REG_DTM,FIRST_REG_ID,LAST_UPDATE_DTM,LAST_UPDATE_ID) VALUES (#{BUSINESS_UNIT},#{RECORD_ID},#{FIELD_ID},'0' ,#{FIRST_REG_DTM},#{FIRST_REG_ID},#{LAST_UPDATE_DTM},#{LAST_UPDATE_ID})
+	</insert>
+	<update id="uptRecordFieldAutoToSysRecfldAuto">
+		UPDATE WF_SYS_RECFLD_AUTO_TBL SET NUM_VAR = #{NUM_VAR}, LAST_UPDATE_DTM = #{LAST_UPDATE_DTM}, LAST_UPDATE_ID = #{LAST_UPDATE_ID} WHERE RECORD_ID = #{RECORD_ID} AND FIELD_ID = #{FIELD_ID}
+	</update>
+	<select id="getLastNumFronUserTableContent" resultType ="String" statementType = "STATEMENT">
+		SELECT MAX(${FIELD_ID}) FROM ${RECORD_ID} WHERE ${FIELD_ID} LIKE '${headStr}%'
+	</select>
+</mapper>
+

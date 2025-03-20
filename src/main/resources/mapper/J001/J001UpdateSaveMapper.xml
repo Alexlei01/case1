@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SpringMapperXmlCodeCreator.java -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wonderrobot.ankenmatchingu.mapper.J001.J001UpdateSaveMapper">
+	<resultMap type="com.wonderrobot.ankenmatchingu.entity.J001.J001UpdateSaveEntity" id="J001UpdateSaveEntityMap">
+		<result property="id" column="id" />
+		<result property="project" column="project" />
+		<result property="outline" column="outline" />
+		<result property="project_machine" column="project_machine" />
+		<result property="description" column="description" />
+		<result property="recruitment" column="recruitment" />
+		<result property="project_cycle" column="project_cycle" />
+		<result property="work_address" column="work_address" />
+		<result property="skill_required" column="skill_required" />
+		<result property="budget" column="budget" />
+		<result property="remark" column="remark" />
+		<result property="email_sender" column="email_sender" />
+		<result property="email_title" column="email_title" />
+		<result property="email_content" column="email_content" />
+		<result property="email_send_time" column="email_send_time" />
+		<result property="LAST_UPDATE_ID" column="LAST_UPDATE_ID" />
+		<result property="LAST_UPDATE_DTM" column="LAST_UPDATE_DTM" />
+	</resultMap>
+	<!-- 案件明細 スマート保存-更新 -->
+	<update id="j001UpdateSaveData" >
+		UPDATE JOB_DETAIL
+	SET id = CAST(#{id} AS SIGNED),project = #{project},outline = #{outline},project_machine = #{project_machine},description = #{description},recruitment = #{recruitment},project_cycle = #{project_cycle},work_address = #{work_address},skill_required = #{skill_required},budget = #{budget},remark = #{remark},email_sender = #{email_sender},email_title = #{email_title},email_content = #{email_content},email_send_time = #{email_send_time},LAST_UPDATE_ID = #{LAST_UPDATE_ID},LAST_UPDATE_DTM = #{LAST_UPDATE_DTM}
+		<where>
+			1 = 1 
+			<if test="id1 != null and id1 != ''">
+				 AND id  = CAST(#{id1} AS SIGNED) 
+			</if>
+		</where>
+	</update>
+</mapper>

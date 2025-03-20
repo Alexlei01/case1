@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SpringMapperXmlCodeCreator.java -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wonderrobot.ankenmatchingu.mapper.C001.C001InsertSaveMapper">
+	<resultMap type="com.wonderrobot.ankenmatchingu.entity.C001.C001InsertSaveEntity" id="C001InsertSaveEntityMap">
+		<result property="id" column="id" />
+		<result property="job_id" column="job_id" />
+		<result property="people_id" column="people_id" />
+		<result property="remark" column="remark" />
+		<result property="status" column="status" />
+		<result property="FIRST_REG_ID" column="FIRST_REG_ID" />
+		<result property="FIRST_REG_DTM" column="FIRST_REG_DTM" />
+		<result property="LAST_UPDATE_ID" column="LAST_UPDATE_ID" />
+		<result property="LAST_UPDATE_DTM" column="LAST_UPDATE_DTM" />
+	</resultMap>
+	<!-- コミュニケーション スマート保存-登録 -->
+	<insert id="c001InsertSaveData" >
+		INSERT INTO COMMUNICATION
+	(id,job_id,people_id,remark,status,FIRST_REG_ID,FIRST_REG_DTM,LAST_UPDATE_ID,LAST_UPDATE_DTM) 
+	VALUES (
+	CAST(#{id} AS SIGNED),CAST(#{job_id} AS SIGNED),CAST(#{people_id} AS SIGNED),#{remark},CAST(#{status} AS SIGNED),#{FIRST_REG_ID},#{FIRST_REG_DTM},#{LAST_UPDATE_ID},#{LAST_UPDATE_DTM})
+	</insert>
+</mapper>

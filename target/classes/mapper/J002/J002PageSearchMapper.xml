@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- BasicMapperXml.vm -->
+<mapper namespace="com.wonderrobot.ankenmatchingu.mapper.J002.J002PageSearchMapper">
+
+	<!-- Query data by search condition. -->
+	<resultMap id="J002PageSearchResponseEntityMap" type="com.wonderrobot.ankenmatchingu.entity.J002.J002PageSearchResponseEntity">
+		<result property="txt2" column="id" />
+		<result property="txt4" column="job_id" />
+		<result property="txt6" column="job_name" />
+		<result property="txt14" column="match_code" />
+		<result property="txt12" column="match_percent" />
+		<result property="txt8" column="people_id" />
+		<result property="txt10" column="people_name" />
+	</resultMap>
+	<select id="queryJ002PageSearch" resultMap="J002PageSearchResponseEntityMap">
+		<!--115-->
+		SELECT 
+		id, 
+		job_id, 
+		job_name, 
+		match_code, 
+		match_percent, 
+		people_id, 
+		people_name FROM JOB_MATCH
+		<where>
+			1 = 1
+			<if test="id != null and id != ''">
+								AND id LIKE CONCAT('%', #{id}, '%')
+							</if>
+			<if test="job_id != null and job_id != ''">
+								AND job_id LIKE CONCAT('%', #{job_id}, '%')
+							</if>
+			<if test="job_name != null and job_name != ''">
+								AND job_name LIKE CONCAT('%', #{job_name}, '%')
+							</if>
+			<if test="match_code != null and match_code != ''">
+								AND match_code LIKE CONCAT('%', #{match_code}, '%')
+							</if>
+			<if test="match_percent != null and match_percent != ''">
+								AND match_percent LIKE CONCAT('%', #{match_percent}, '%')
+							</if>
+			<if test="people_id != null and people_id != ''">
+								AND people_id LIKE CONCAT('%', #{people_id}, '%')
+							</if>
+			<if test="people_name != null and people_name != ''">
+								AND people_name LIKE CONCAT('%', #{people_name}, '%')
+							</if>
+		</where>
+		
+		 LIMIT 10
+	</select>
+	<!-- Delete data in search. -->
+	<delete id="deleteJ002PageSearch" >
+		DELETE FROM JOB_MATCH WHERE id = #{id}
+	</delete>
+
+</mapper>

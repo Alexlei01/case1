@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SpringMapperXmlCodeCreator.java -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wonderrobot.ankenmatchingu.mapper.S001.S001Update1GridSaveMapper">
+	<resultMap type="com.wonderrobot.ankenmatchingu.entity.S001.S001Update1GridSaveEntity" id="S001Update1GridSaveEntityMap">
+		<result property="config_code" column="config_code" />
+		<result property="description" column="description" />
+		<result property="value" column="value" />
+		<result property="id" column="id" />
+		<result property="LAST_UPDATE_ID" column="LAST_UPDATE_ID" />
+		<result property="LAST_UPDATE_DTM" column="LAST_UPDATE_DTM" />
+	</resultMap>
+	<!-- 共通設定管理 スマート保存-更新 -->
+	<update id="s001Update1GridSaveData" >
+		UPDATE SYS_CONFIG
+	SET config_code = #{config_code},description = #{description},value = #{value},id = #{id},LAST_UPDATE_ID = #{LAST_UPDATE_ID},LAST_UPDATE_DTM = #{LAST_UPDATE_DTM}
+		<where>
+			1 = 1 
+			<if test="id1 != null and id1 != ''">
+				 AND id  = CAST(#{id1} AS SIGNED) 
+			</if>
+		</where>
+	</update>
+</mapper>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SpringMapperXmlCodeCreator.java -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wonderrobot.ankenmatchingu.mapper.P001.P001InsertSaveMapper">
+	<resultMap type="com.wonderrobot.ankenmatchingu.entity.P001.P001InsertSaveEntity" id="P001InsertSaveEntityMap">
+		<result property="id" column="id" />
+		<result property="tag_type" column="tag_type" />
+		<result property="tag_id" column="tag_id" />
+		<result property="number_start" column="number_start" />
+		<result property="number_end" column="number_end" />
+		<result property="value" column="value" />
+		<result property="detail_id" column="detail_id" />
+		<result property="tag_code" column="tag_code" />
+		<result property="email_send_time" column="email_send_time" />
+		<result property="FIRST_REG_ID" column="FIRST_REG_ID" />
+		<result property="FIRST_REG_DTM" column="FIRST_REG_DTM" />
+		<result property="LAST_UPDATE_ID" column="LAST_UPDATE_ID" />
+		<result property="LAST_UPDATE_DTM" column="LAST_UPDATE_DTM" />
+	</resultMap>
+	<!-- 技術者タグ スマート保存-登録 -->
+	<insert id="p001InsertSaveData" >
+		INSERT INTO PEOPLE_TAG
+	(id,tag_type,tag_id,number_start,number_end,value,detail_id,tag_code,email_send_time,FIRST_REG_ID,FIRST_REG_DTM,LAST_UPDATE_ID,LAST_UPDATE_DTM) 
+	VALUES (
+	CAST(#{id} AS SIGNED),CAST(#{tag_type} AS SIGNED),CAST(#{tag_id} AS SIGNED),CAST(#{number_start} AS SIGNED),CAST(#{number_end} AS SIGNED),#{value},CAST(#{detail_id} AS SIGNED),#{tag_code},#{email_send_time},#{FIRST_REG_ID},#{FIRST_REG_DTM},#{LAST_UPDATE_ID},#{LAST_UPDATE_DTM})
+	</insert>
+</mapper>

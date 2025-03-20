@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- BasicMapperXml.vm -->
+<mapper namespace="com.wonderrobot.ankenmatchingu.mapper.C001.C001PageSearchMapper">
+
+	<!-- Query data by search condition. -->
+	<resultMap id="C001PageSearchResponseEntityMap" type="com.wonderrobot.ankenmatchingu.entity.C001.C001PageSearchResponseEntity">
+		<result property="txt2" column="id" />
+		<result property="txt4" column="job_id" />
+		<result property="txt6" column="people_id" />
+		<result property="txt8" column="remark" />
+		<result property="txt10" column="status" />
+	</resultMap>
+	<select id="queryC001PageSearch" resultMap="C001PageSearchResponseEntityMap">
+		<!--115-->
+		SELECT 
+		id, 
+		job_id, 
+		people_id, 
+		remark, 
+		status FROM COMMUNICATION
+		<where>
+			1 = 1
+			<if test="id != null and id != ''">
+								AND id LIKE CONCAT('%', #{id}, '%')
+							</if>
+			<if test="job_id != null and job_id != ''">
+								AND job_id LIKE CONCAT('%', #{job_id}, '%')
+							</if>
+			<if test="people_id != null and people_id != ''">
+								AND people_id LIKE CONCAT('%', #{people_id}, '%')
+							</if>
+			<if test="remark != null and remark != ''">
+								AND remark LIKE CONCAT('%', #{remark}, '%')
+							</if>
+			<if test="status != null and status != ''">
+								AND status LIKE CONCAT('%', #{status}, '%')
+							</if>
+		</where>
+		
+		 LIMIT 10
+	</select>
+	<!-- Delete data in search. -->
+	<delete id="deleteC001PageSearch" >
+		DELETE FROM COMMUNICATION WHERE id = #{id}
+	</delete>
+
+</mapper>

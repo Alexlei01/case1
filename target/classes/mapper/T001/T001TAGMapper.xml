@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SpringMapperXmlCodeCreator.java -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wonderrobot.ankenmatchingu.mapper.T001.T001TAGMapper">
+	<resultMap type="com.wonderrobot.ankenmatchingu.entity.T001.T001TAGEntity" id="T001TAGEntityMap">
+		<id property="id" column="id" />
+		<result property="tag_name" column="tag_name" />
+		<result property="tag_type" column="tag_type" />
+		<result property="remark" column="remark" />
+		<result property="tag_code" column="tag_code" />
+	</resultMap>
+	<!-- ページ用 タグ管理 -->
+	<select id="t001InitDepthZero"  resultMap="T001TAGEntityMap">
+		<!--475-->
+		SELECT 
+		id,
+		tag_name,
+		tag_type,
+		remark,
+		tag_code
+		FROM TAG
+		<where>
+			1 = 1 
+			<if test="txt2 != null and txt2 != ''">
+				 AND id  = CAST(#{txt2} AS SIGNED) 
+			</if>
+		</where>
+	</select>
+	<!-- ページ用 タグ管理 -->
+	<select id="t001SearchInitDepthZero"  resultMap="T001TAGEntityMap">
+		<!--475-->
+		SELECT 
+		id,
+		tag_name,
+		tag_type,
+		remark,
+		tag_code
+		FROM TAG
+		<where>
+			1 = 1 
+			<if test="txt2 != null and txt2 != ''">
+				 AND id  = CAST(#{txt2} AS SIGNED) 
+			</if>
+		</where>
+	</select>
+</mapper>

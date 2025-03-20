@@ -1,0 +1,43 @@
+2025-03-18_08:47:14.489 []  WARN   HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=12h21m7s828ms171µs200ns).
+2025-03-18_09:18:05.179 []  INFO   Application shutdown requested.
+2025-03-18_09:18:05.725 []  INFO   Pausing ProtocolHandler ["http-nio-8686"]
+2025-03-18_09:18:05.726 []  INFO   Stopping service [Tomcat]
+2025-03-18_09:18:05.734 []  INFO   Destroying Spring FrameworkServlet 'dispatcherServlet'
+2025-03-18_09:18:05.738 []  WARN   The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:215)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2078)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1093)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:809)
+ java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1074)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1134)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+ java.lang.Thread.run(Thread.java:750)
+2025-03-18_09:18:05.741 []  INFO   Stopping ProtocolHandler ["http-nio-8686"]
+2025-03-18_09:18:05.873 []  INFO   Destroying ProtocolHandler ["http-nio-8686"]
+2025-03-18_09:18:06.394 []  INFO   HikariPool-1 - Shutdown initiated...
+2025-03-18_09:18:06.400 []  INFO   HikariPool-1 - Shutdown completed.
+2025-03-18_19:38:17.675 []  INFO   HV000001: Hibernate Validator 6.2.5.Final
+2025-03-18_19:38:17.729 []  INFO   Starting Application using Java 1.8.0_391 on DESKTOP-2J1KJC9 with PID 14484 (D:\sts-workspace\case\target\classes started by yutia in D:\sts-workspace\case)
+2025-03-18_19:38:17.734 []  INFO   No active profile set, falling back to 1 default profile: "default"
+2025-03-18_19:38:17.824 []  INFO   Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-03-18_19:38:17.824 []  INFO   For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-03-18_19:38:22.385 []  INFO   Tomcat initialized with port(s): 8686 (http)
+2025-03-18_19:38:22.405 []  INFO   Initializing ProtocolHandler ["http-nio-8686"]
+2025-03-18_19:38:22.407 []  INFO   Starting service [Tomcat]
+2025-03-18_19:38:22.407 []  INFO   Starting Servlet engine: [Apache Tomcat/9.0.75]
+2025-03-18_19:38:22.847 []  INFO   At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2025-03-18_19:38:22.857 []  INFO   Initializing Spring embedded WebApplicationContext
+2025-03-18_19:38:22.857 []  INFO   Root WebApplicationContext: initialization completed in 5031 ms
+2025-03-18_19:38:44.455 []  INFO   Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@23319996, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6995bafd, org.springframework.security.web.context.SecurityContextPersistenceFilter@298d8cfa, org.springframework.security.web.header.HeaderWriterFilter@433abe44, org.springframework.security.web.authentication.logout.LogoutFilter@5a179907, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@55e73316, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@83b91d4, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7fea9cdd, org.springframework.security.web.session.SessionManagementFilter@130f4c6a, org.springframework.security.web.access.ExceptionTranslationFilter@3ee9ce5, org.springframework.security.web.access.intercept.AuthorizationFilter@687fd2c0]
+2025-03-18_19:38:44.767 []  INFO   LiveReload server is running on port 35729
+2025-03-18_19:38:47.824 []  INFO   Starting ProtocolHandler ["http-nio-8686"]
+2025-03-18_19:38:48.074 []  INFO   Tomcat started on port(s): 8686 (http) with context path ''
+2025-03-18_19:38:48.176 []  INFO   Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-18_19:38:48.176 []  INFO   Initializing Servlet 'dispatcherServlet'
+2025-03-18_19:38:48.181 []  INFO   Started Application in 31.31 seconds (JVM running for 35.322)
+2025-03-18_19:38:48.183 []  INFO   Completed initialization in 7 ms
+2025-03-18_19:38:54.098 []  INFO   HikariPool-1 - Starting...
+2025-03-18_19:38:54.226 []  INFO   HikariPool-1 - Start completed.
+2025-03-18_19:39:21.507 []  WARN   No mapping for POST /F20230130161732328.do
+2025-03-18_19:39:21.509 []  WARN   No mapping for POST /F20230130161732328.do

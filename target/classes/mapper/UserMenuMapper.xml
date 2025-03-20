@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wonderrobot.ankenmatchingu.mapper.UserMenuMapper">
+	<resultMap type="com.wonderrobot.ankenmatchingu.entity.UserMenuEntity" id="UserMenuEntityMap">
+		<result property="PROFILE_ID" column="PROFILE_ID" />
+		<result property="FATHER_ID" column="FATHER_ID" />
+		<result property="PFOFILE_NM" column="PFOFILE_NM" />
+		<result property="PAGE_MNG_ID" column="PAGE_MNG_ID" />
+		<result property="DISPLAYFLG" column="DISPLAYFLG" />
+	</resultMap>
+	<!--  -->
+	<select id="getUserGroup" resultType="String" >
+		select
+		M1.GROUP_ID
+		from
+		WF_GROUP_USER_TBL A
+		inner join WF_GROUP_TBL M on
+		M.GROUP_ID = A.GROUP_ID
+		and M.BUSINESS_UNIT = A.BUSINESS_UNIT
+		inner join WF_GROUP_TBL M1 on
+		( M.LEFTID >= M1.LEFTID
+		and M.RIGHTID &lt;= M1.RIGHTID
+		and M.ENVIRONFLG = M1.ENVIRONFLG
+		and M.BUSINESS_UNIT = M1.BUSINESS_UNIT )
+		where
+		A.USERID = #{USERID}
+	</select>
+	<select id="getBusinessUserGroup" resultType="String" >
+		SELECT g.USER_VALUE1 as GROUP_ID
+		FROM ${LOGINTABLEID}
+		INNER JOIN wf_user_value_rel_map_tbl g ON ${LOGINTABLEID}.${DEPARTID} = g.USER_VALUE2
+		WHERE ${WHRLOGINID} = #{LOGINID}
+	</select>
+	<select id="getUserMenu" resultMap="UserMenuEntityMap">
+		select
+			BL.PROFILE_ID,
+			BL.FATHER_ID,
+			BL.PFOFILE_NM,
+			C.PAGE_MNG_ID ,
+			BL.CONTENTS,
+			BL.FROMFLG,
+			C.OURURL ,
+			C.PC_MB_FLG ,
+			BL.RIGHTTYPE,
+			BL.DISPLAYFLG,
+			C.TRANSFLG,
+			C.INSERTFLG,
+			C.UPDATEFLG,
+			C.FREE_FIELD4,
+			BL.path
+		from
+			(
+			select
+				AL.PROFILE_ID,
+				AL.FATHER_ID,
+				AL.PFOFILE_NM,
+				AL.CONTENTS,
+				AL.FROMFLG,
+				AL.RIGHTTYPE,
+				AL.DISPLAYFLG,
+				AL.PATH
+			from
+				(
+				select
+					distinct M1.PROFILE_ID,
+					M1.PFOFILE_NM,
+					M1.FATHER_ID,
+					A.RIGHTTYPE,
+					M1.FROMFLG,
+					M1.CONTENTS,
+					M1.PATH,
+					M1.DISPLAYFLG
+				from
+					WF_PAGE_RIGHT_TBL A
+				inner join WF_MENU_TBL M on
+					M.PROFILE_ID = A.PAGEID
+					and A.BUSINESS_UNIT = M.BUSINESS_UNIT
+				inner join WF_MENU_TBL M1 on
+					( M1.PATH like CONCAT(M.PATH, '%')
+					and M.BUSINESS_UNIT = M1.BUSINESS_UNIT)
+				where
+					( A.USERID = #{USERID}
+					or (
+		
+				<if test="GROUPIDS!= null">
+					A.GROUPID in
+					<foreach item="item" index="index" collection="GROUPIDS" open="(" close=")" separator=",">
+						#{item}
+					</foreach>
+					and 
+				</if>
+					A.USERID = ''))) AL
+					group by
+						AL.PROFILE_ID
+					having
+					COUNT(*) = 1
+					and AL.RIGHTTYPE = '2') BL
+					left join WF_PAGE_TBL C on
+						BL.PROFILE_ID = C.PAGEID
+					order by
+						BL.PATH,
+						BL.PROFILE_ID
+	</select>
+</mapper>
+

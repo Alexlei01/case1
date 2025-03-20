@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- BasicMapperXml.vm -->
+<mapper namespace="com.wonderrobot.ankenmatchingu.mapper.C002.C002PageSearchMapper">
+
+	<!-- Query data by search condition. -->
+	<resultMap id="C002PageSearchResponseEntityMap" type="com.wonderrobot.ankenmatchingu.entity.C002.C002PageSearchResponseEntity">
+		<result property="txt10" column="email_content" />
+		<result property="txt6" column="email_receiver" />
+		<result property="txt12" column="email_sender" />
+		<result property="txt14" column="email_send_time" />
+		<result property="txt8" column="email_title" />
+		<result property="txt2" column="id" />
+	</resultMap>
+	<select id="queryC002PageSearch" resultMap="C002PageSearchResponseEntityMap">
+		<!--115-->
+		SELECT 
+		email_content, 
+		email_receiver, 
+		email_sender, 
+		email_send_time, 
+		email_title, 
+		id FROM COMMUNICATION_RECORD
+		<where>
+			1 = 1
+			<if test="email_content != null and email_content != ''">
+								AND email_content LIKE CONCAT('%', #{email_content}, '%')
+							</if>
+			<if test="email_receiver != null and email_receiver != ''">
+								AND email_receiver LIKE CONCAT('%', #{email_receiver}, '%')
+							</if>
+			<if test="email_sender != null and email_sender != ''">
+								AND email_sender LIKE CONCAT('%', #{email_sender}, '%')
+							</if>
+			<if test="email_send_time != null and email_send_time != ''">
+								AND email_send_time LIKE CONCAT('%', #{email_send_time}, '%')
+							</if>
+			<if test="email_title != null and email_title != ''">
+								AND email_title LIKE CONCAT('%', #{email_title}, '%')
+							</if>
+		</where>
+		
+		 LIMIT 10
+	</select>
+	<!-- Delete data in search. -->
+	<delete id="deleteC002PageSearch" >
+		DELETE FROM COMMUNICATION_RECORD WHERE id = CAST(#{id} AS integer)
+	</delete>
+
+</mapper>
