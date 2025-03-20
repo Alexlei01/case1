@@ -771,7 +771,7 @@
                   <input type="hidden" name="filterError" id="filterError">
                   <input type="hidden" name="recognID" id="recognID">
                   <input type="hidden" name="srecognID" id="srecognID">
-                  <input type="hidden" name="initSearch" id="initSearch">
+                  <input type="hidden" name="initdragB16" id="initSearch">
                   <input type="hidden" name="sinitSearch" id="sinitSearch">
                   <input type="hidden" name="dataControlFlg" id="dataControlFlg">
                   <input type="hidden" name="uniqueId" id="uniqueId">
@@ -1264,7 +1264,7 @@ $(document).ready(function() {
     e.preventDefault()
     if (SF.isServerExecute() && (!false || inputDataCheck())) {
       SF.setServerExecute(false)
-      let url = apiUrl + "/F20230130161732328.do"
+      let url = apiUrl + "/j004/search"
       let formData = getFormData()
       formData["row"] = $(this).parents("tr").index() + 1
       ajax(url, formData, "serverAfter(data)")
